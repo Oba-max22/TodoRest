@@ -10,16 +10,13 @@ import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
-import org.springframework.validation.annotation.Validated;
 
 import java.sql.Timestamp;
 
-//@Validated
 @Data
 @Entity
 public class Todo {
 
-    @NotNull
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
