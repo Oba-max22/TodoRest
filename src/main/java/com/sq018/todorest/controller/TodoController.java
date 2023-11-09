@@ -18,6 +18,11 @@ public class TodoController {
     public static final String TODO_DELETED_SUCCESSFULLY = "Todo deleted successfully!";
     private final TodoService todoService;
 
+    @GetMapping("/")
+    public String welcome() {
+        return "Hello, World";
+    }
+
     @PostMapping("/todos")
     public ResponseEntity<Todo> createTodo(@Valid @RequestBody Todo request) {
         Todo response = todoService.createTodo(request);
@@ -55,7 +60,6 @@ public class TodoController {
         return ResponseEntity.ok(new PageImpl<>(todosPage.getContent(), todosPage.getPageable(), todosPage.getTotalElements()));
     }
 
-    // todo: search endpoint
     @GetMapping("/todos/search")
     public ResponseEntity<List<Todo>> searchTodos(@RequestParam(name = "title", required = false) String title,
                                                   @RequestParam(name = "description", required = false) String description,
